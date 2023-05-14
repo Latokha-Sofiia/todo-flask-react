@@ -1,0 +1,38 @@
+.wrapper {
+    padding: 20px;
+    width: 257px;
+    background-color: white;
+    height: 100%;
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logoTitle {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.list {
+    padding-top: 35px;
+}
+
+.listItem {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #9896A3;
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+
+}

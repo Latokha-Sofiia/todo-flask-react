@@ -1,0 +1,32 @@
+.wrapper {
+    margin-bottom: 20px;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    border-bottom: #E6E4F0 1px solid;
+}
+
+.todoInput {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    padding: 5px;
+    width: 300px;
+    font-size: 20px;
+}
+
+.addTodo {
+    width: 28px;
+    height: 28px;
+    font-size: 28px;
+    background-color: #b5c4ff;
+    color: #5577FF;
+    line-height: 17px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+}

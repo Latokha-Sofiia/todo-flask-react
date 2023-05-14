@@ -1,0 +1,25 @@
+/*ФАЙЛ ГЛОБАЛЬНЫХ СТИЛЕЙ */
+
+body {
+  margin: 0;
+  font-family: Plus Jakarta Sans;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./fonts/PlusJakartaSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./fonts/PlusJakartaSans-Medium.ttf') format('truetype');
+  font-weight: 600;
+}

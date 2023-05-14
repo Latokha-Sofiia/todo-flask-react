@@ -1,0 +1,10 @@
+.wrapper {
+    background-color: white;
+    color: #56555C;
+    border-radius: 10px;
+    border: 1px solid #E6E4F0;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
