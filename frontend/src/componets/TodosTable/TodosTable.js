@@ -1,20 +1,11 @@
 import style from './TodosTable.module.css'
 import TodosList from '../TodosList/TodosList'
 import CreateTodo from '../CreateTodo/CreateTodo'
+import DndTodos from "../DndTodos/DndTodos";
 
 export default function TodosTable(props) {
 
-    const openTodos = props.todos.filter((item) => {
-        return item.state === 'open' 
-    })
 
-    const inProgressTodos = props.todos.filter((item) => {
-        return item.state === 'progress' 
-    })
-
-    const doneTodos = props.todos.filter((item) => {
-        return item.state === 'done' 
-    })
 
     return (
         <div className={style.wrapper}>
@@ -34,11 +25,7 @@ export default function TodosTable(props) {
                 </div>
             </div>
 
-            <div className={style.wrapperTodos}>
-                <TodosList todos={openTodos}></TodosList>
-                <TodosList todos={inProgressTodos}></TodosList>
-                <TodosList todos={doneTodos}></TodosList>
-            </div>
+            <DndTodos todos={props.todos}></DndTodos>
         </div>
     )
 }
