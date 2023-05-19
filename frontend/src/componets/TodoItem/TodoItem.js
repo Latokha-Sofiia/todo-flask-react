@@ -11,24 +11,26 @@ export default function TodoItem(props) {
                 handlerId: monitor.getHandlerId(),
             }
         },
-        drop(item, monitor) {
-            if (!ref.current) {
-                return
+        drop(dragItem, monitor) {
+            const fromIndex = dragItem.index
+            let endIndex = props.index
+            const fromColumn = dragItem.column
+            const endColumn = props.column
+
+            if (!ref.current?.children[0]) {
+                props.moveTodo(fromIndex, fromColumn, endIndex, endColumn);
+                return;
             }
-            const dragIndex = item.index
-            const hoverIndex = props.index
-            const dragColumn = item.column
-            const hoverColumn = props.column
 
             // Don't replace items with themselves
-            if (dragIndex === hoverIndex && dragColumn === hoverColumn) {
+            if (fromIndex === endIndex && fromColumn === endColumn) {
                 return
             }
             // Determine rectangle on screen
-            const hoverBoundingRect = ref.current?.getBoundingClientRect()
+            const hoverBoundingRect = ref.current?.children[0].getBoundingClientRect()
             // Get vertical middle
             const hoverMiddleY =
-                (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
+                (hoverBoundingRect.bottom + hoverBoundingRect.top) / 2
             // Determine mouse position
             const clientOffset = monitor.getClientOffset()
             // Get pixels to the top
@@ -37,20 +39,17 @@ export default function TodoItem(props) {
             // When dragging downwards, only move when the cursor is below 50%
             // When dragging upwards, only move when the cursor is above 50%
             // Dragging downwards
-            if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-                return
-            }
-            // Dragging upwards
-            if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-                return
+
+            if (clientOffset.y > hoverMiddleY) {
+                endIndex++;
             }
             // Time to actually perform the action
-            props.moveTodo(dragIndex, hoverIndex, dragColumn, hoverColumn)
+            props.moveTodo(fromIndex, fromColumn, endIndex, endColumn)
             // Note: we're mutating the monitor item here!
             // Generally it's better to avoid mutations,
             // but it's good here for the sake of performance
             // to avoid expensive index searches.
-            item.index = hoverIndex
+            dragItem.index = endIndex
         }
     })
     const [{ isDragging }, drag] = useDrag({
@@ -66,10 +65,14 @@ export default function TodoItem(props) {
 
     return(
         <div className={style.wrapper} style={{opacity: isDragging ? 0 : 1}} ref={ref} data-handler-id={handlerId}>
-            <div className={style.todoBox}>
-                <img src="/images/todoText.png"/>
-                {props.todo.title}
-            </div>
+            {
+                props.todo ? (
+                    <div className={style.todoBox}>
+                        <img src="/images/todoText.png"/>
+                        {props.todo.title}
+                    </div>
+                ) : null
+            }
         </div>
     )
 }

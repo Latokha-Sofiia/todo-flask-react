@@ -1,3 +1,10 @@
+import NotesBlock from "../NotesBlock/NotesBlock";
+import styles from './RightPanel.module.css'
+
 export default function RightPanel() {
-    return <h1>Правая панель</h1>
+    return (
+        <div className={styles.wrapper}>
+            <NotesBlock />
+        </div>
+    )
 }

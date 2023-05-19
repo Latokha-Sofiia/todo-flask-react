@@ -1,12 +1,9 @@
 import style from './TodosTable.module.css'
-import TodosList from '../TodosList/TodosList'
+
 import CreateTodo from '../CreateTodo/CreateTodo'
 import DndTodos from "../DndTodos/DndTodos";
 
 export default function TodosTable(props) {
-
-
-
     return (
         <div className={style.wrapper}>
             <CreateTodo addTodo={props.addTodo}></CreateTodo>
@@ -25,7 +22,7 @@ export default function TodosTable(props) {
                 </div>
             </div>
 
-            <DndTodos todos={props.todos}></DndTodos>
+            <DndTodos todos={props.todos} moveTodo={props.moveTodo}></DndTodos>
         </div>
     )
 }

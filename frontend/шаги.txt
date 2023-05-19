@@ -74,7 +74,7 @@ todos = newTodos, то реакт не заметит это изменение 
 что мы из дочернего элемента AddTodo должны как-то изменить состояние TodoPage. Для этого мы в компоненте TodoPage создадим функцию addTodo
 и передадим её как props. В дальнейшем мы можем вызывать эту функцию из дочернего элемента AddTodo.
 
-
+** DRAG AND DROP https://react-dnd.github.io/react-dnd/examples/sortable/simple
 
 
 БЕКЕНД
